@@ -1,0 +1,16 @@
+{
+  "name": "lindua-icons",
+  "version": "0.0.1",
+  "description": "A collection of SVG icons created by Vect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Mastin",
+  "repository": "https://github.com/HeadAdmiral/lindua-icons",
+  "license": "SEE LICENSE IN license.md",
+  "peerDependencies": {
+    "vue": ">= 3"
+  },
+  "private": true
+}
