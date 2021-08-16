@@ -62,11 +62,13 @@
           >
             {{ symbol }}
           </t-symbol>
+          <t-symbol v-if="!deck.colorIdentity.length">
+            c
+          </t-symbol>
         </div>
       </div>
       <div class="deck-created-date">
-        Created {{ new Date(deck.created).toLocaleDateString() }}
-        Updated {{ deck.updated }}
+        Created {{ new Date(deck.created).toLocaleDateString() }}&ensp;•&ensp;{{ deck.quantity }}
       </div>
     </router-link>
   </div>

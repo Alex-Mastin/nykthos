@@ -1,5 +1,5 @@
 <script>
-import { h} from "vue";
+import { h } from "vue";
 
 export default {
   name: "TSymbol",
@@ -46,5 +46,8 @@ export default {
   }
   .symbol-g {
     background-image: url("../../assets/svg/symbol-g.svg");
+  }
+  .symbol-c {
+    background-image: url("../../assets/svg/symbol-c.svg");
   }
 </style>
