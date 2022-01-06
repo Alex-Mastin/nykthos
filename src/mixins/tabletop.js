@@ -183,7 +183,7 @@ const getFaceArt = (card) => {
 const getBackArt = (card) => {
   const { cardFaces } = card
 
-  if (cardFaces?.length) {
+  if (cardFaces?.length && cardFaces[1].image_uris) {
     const { image_uris: images } = cardFaces[1]
     const { png, large, normal, small } = images
 
