@@ -257,7 +257,7 @@ export default {
 
           deck[board].push({
             quantity: Number(quantity?.[0].replace('x', '') || '1'),
-            name: name?.filter(Boolean)?.join()
+            name: name?.filter(Boolean)?.join().replace(/\//g, '//')
           })
         })
       })

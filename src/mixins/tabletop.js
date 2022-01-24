@@ -151,7 +151,7 @@ const generateTokens = (cards) => {
     }
   })
 
-  return result
+  return [...new Map(result.map(token => [token.oracle_id, token])).values()]
 }
 
 const generateSingleCard = (card) => {

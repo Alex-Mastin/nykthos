@@ -10,10 +10,6 @@ const chunkArray = (array, chunkSize) => {
   return chunked;
 }
 
-const forceExactSearch = (cards) => {
-  return cards.map(card => `!"${card}"`)
-}
-
 export const fetchCardData = async (deck = []) => {
   const results = { mainboard: [], sideboard: [] }
 
@@ -30,6 +26,7 @@ export const fetchCardData = async (deck = []) => {
 
     response.forEach(payload => {
       const { data } = payload.data
+      const filteredData = filterCardData(deck[board], data)
 
       results[board].push(...data)
     })
@@ -52,18 +49,38 @@ const fetchTokens = async (name, tokens) => {
 
   response.forEach(payload => {
     const { data } = payload
-    const { id, image_uris: images, name } = data
+    const { image_uris: images, name, oracle_id } = data
 
     results.push({
-      id,
       images,
       name,
+      oracle_id,
       quantity: 1
     })
   })
 
   return results.filter(result => result.name !== name)
 }
+
+const filterCardData = (deck, data) => {
+  const indices = []
+
+  for (let i = 0; i < data.length; i++) {
+    if (!deck.filter(result => result.name === data[i].name).length) {
+      console.log(`Removed ${data[i].name}`)
+      indices.push(i)
+    }
+  }
+
+  indices.forEach(index => data.splice(index, 1))
+
+  return data
+}
+
+const forceExactSearch = (cards) => {
+  return cards.map(card => `!"${card}"`)
+}
+
 
 const getCardQuantity = (cards, name) => {
   const result = cards.filter(card => {
